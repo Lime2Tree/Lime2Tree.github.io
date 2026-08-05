@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>황경화 | Kyunghwa Hwang — Data-Driven Researcher</title>
-<meta name="description" content="황경화(Kyunghwa Hwang) — 우주관광·XR 분야 데이터 연구자 포트폴리오. SEM, 혼합연구방법론, AI 예측모델링.">
+<title>황경화 | Kyunghwa Hwang — AI &amp; Data-Driven Researcher</title>
+<meta name="description" content="황경화(Kyunghwa Hwang) — AI·데이터 기반 연구자. 우주관광·XR 분야의 예측모델링, 구조방정식(SEM), 메타분석 연구 포트폴리오.">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230F1B3D'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%23C9A34E'/%3E%3Ccircle cx='72' cy='34' r='3' fill='%23C9A34E'/%3E%3Ccircle cx='28' cy='68' r='3' fill='%23C9A34E'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23060A18'/%3E%3Ccircle cx='50' cy='50' r='7' fill='%23C9A34E'/%3E%3Ccircle cx='74' cy='32' r='3' fill='%23C9A34E'/%3E%3Ccircle cx='26' cy='70' r='3' fill='%23C9A34E'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- 스크롤 진행률 표시 바 (페이지 최상단) -->
+<!-- 스크롤 진행률 바 -->
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <!-- ================= NAV ================= -->
@@ -37,92 +38,139 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
+  <div class="aurora" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
   <canvas id="starCanvas" aria-hidden="true"></canvas>
+
   <div class="container hero-inner">
     <div class="hero-text">
-      <p class="eyebrow hero-anim" style="--d:.05s">Ph.D. in Engineering · Big Data Analytics</p>
-      <h1 class="hero-anim" style="--d:.18s">
-        아직 오지 않은 미래를<br>
-        <span class="accent-grad">데이터</span>로 먼저 읽습니다
+      <p class="hero-name anim" style="--d:.05s">황경화</p>
+      <p class="hero-role anim" style="--d:.14s">AI &amp; Data-Driven Researcher</p>
+
+      <h1 class="hero-title anim" style="--d:.24s">
+        Designing<br>
+        the Future of<br>
+        <span class="grad-text">Space Tourism</span>
       </h1>
 
-      <!-- 자동으로 글자가 타이핑되는 줄 (문구는 js/main.js 의 ROTATING_WORDS 에서 수정) -->
-      <p class="hero-typed hero-anim" style="--d:.3s">
-        <span class="typed-label">지금 연구하고 있는 것</span>
+      <!-- 전문 분야 칩 -->
+      <div class="chip-row anim" style="--d:.36s">
+        <span class="chip">AI</span>
+        <span class="chip">Machine Learning</span>
+        <span class="chip">Deep Learning</span>
+        <span class="chip">Meta-analysis</span>
+        <span class="chip">Decision Intelligence</span>
+      </div>
+
+      <!-- 자동 타이핑 줄 (문구는 js/main.js 의 ROTATING_WORDS 에서 수정) -->
+      <p class="hero-typed anim" style="--d:.46s">
+        <span class="typed-label">Currently Exploring</span>
         <span class="typed-text" id="typedText"></span><span class="typed-caret" aria-hidden="true"></span>
       </p>
 
-      <p class="hero-sub hero-anim" style="--d:.42s">
-        우주관광이라는 아직 열리지 않은 시장과, XR이라는 새로운 경험의 문법.
-        통계모델링·머신러닝·딥러닝·메타분석을 엮어 그 안의 신호를 찾아냅니다.
+      <p class="hero-sub anim" style="--d:.56s">
+        AI와 데이터 분석으로 아직 존재하지 않는 시장을 예측하고,<br>
+        우주관광 · XR · 스마트관광의 미래 의사결정을 연구합니다.
       </p>
 
-      <div class="hero-stats hero-anim" style="--d:.54s">
-        <div class="stat">
-          <span class="stat-num" data-count="7" data-suffix="+">0</span>
-          <span class="stat-label">연구·용역 프로젝트</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" data-count="4">0</span>
-          <span class="stat-label">학술상 수상</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" data-count="4">0</span>
-          <span class="stat-label">연구기관·학회 활동</span>
-        </div>
-      </div>
-
-      <div class="hero-btns hero-anim" style="--d:.66s">
-        <a href="#contact" class="btn btn-primary">연락하기</a>
-        <a href="assets/resume.pdf" class="btn btn-outline" download>이력서 다운로드</a>
+      <div class="hero-btns anim" style="--d:.66s">
+        <a href="#contact" class="btn btn-primary">Contact</a>
+        <a href="assets/resume.pdf" class="btn btn-ghost" download>CV</a>
+        <a href="https://scholar.google.co.kr/citations?hl=ko&user=ta3gg88AAAAJ" target="_blank" rel="noopener" class="btn btn-ghost">Google Scholar</a>
       </div>
     </div>
-    <div class="hero-photo hero-anim" style="--d:.32s">
-      <div class="photo-frame">
-        <img src="assets/profile.jpg" alt="황경화 프로필 사진">
+
+    <div class="hero-photo anim" style="--d:.3s">
+      <div class="photo-wrap" id="photoWrap">
+        <span class="photo-glow" aria-hidden="true"></span>
+        <span class="photo-ring" aria-hidden="true"></span>
+        <div class="photo-frame">
+          <img src="assets/profile.jpg" alt="황경화 프로필 사진">
+        </div>
       </div>
     </div>
   </div>
-  <a href="#about" class="scroll-cue" aria-label="아래로 스크롤">↓</a>
+
+  <!-- 통계 카드 -->
+  <div class="container hero-stats anim" style="--d:.78s">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2c3.5 2.6 5.5 6.3 5.5 10.2L17 18H7l-.5-5.8C6.5 8.3 8.5 4.6 12 2z"/><path d="M7 18l-2.5 3.5L8 21M17 18l2.5 3.5L16 21"/><circle cx="12" cy="10" r="2"/></svg>
+      </div>
+      <div class="stat-body">
+        <span class="stat-num" data-count="7" data-suffix="+">0</span>
+        <span class="stat-label">Research Projects</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 3h8v5a4 4 0 01-8 0V3z"/><path d="M8 5H5v2a3 3 0 003 3M16 5h3v2a3 3 0 01-3 3"/><path d="M12 12v4M9 21h6M10 21l.5-5h3l.5 5"/></svg>
+      </div>
+      <div class="stat-body">
+        <span class="stat-num" data-count="4">0</span>
+        <span class="stat-label">Academic Awards</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-6-3.9-9S9.4 5.6 12 3z"/></svg>
+      </div>
+      <div class="stat-body">
+        <span class="stat-num" data-count="4">0</span>
+        <span class="stat-label">Research Networks</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-cue" aria-label="아래로 스크롤"><span></span></a>
 </section>
 
 <!-- ================= ABOUT ================= -->
 <section class="section" id="about">
   <div class="container">
     <p class="section-eyebrow reveal">About</p>
-    <h2 class="section-title reveal">연구자 소개</h2>
+    <h2 class="section-title reveal">Research Philosophy</h2>
+
+    <blockquote class="philosophy reveal">
+      데이터는 현상을 설명하는 도구가 아니라,<br>
+      <strong>미래의 의사결정을 설계하는 도구</strong>라고 믿습니다.
+    </blockquote>
+
     <p class="about-text reveal">
-      경희대학교 빅데이터응용학과에서 경영학 석사와 공학 박사 학위를 취득했으며,<br>
-      통계적 모델링과 혼합연구방법론(Mixed-Methods)을 바탕으로 우주관광·XR
-      분야를 연구하고 있습니다. <br>AI 기반 예측모델 개발부터 정책 자문까지, 데이터가
-      실제 의사결정에 연결되는 지점에 관심이 많습니다.
+      경희대학교 빅데이터응용학과에서 경영학 석사와 공학 박사 학위를 취득했으며,
+      통계적 모델링과 혼합연구방법론(Mixed-Methods)을 바탕으로 우주관광·XR 분야를
+      연구하고 있습니다. AI 기반 예측모델 개발부터 정책 자문까지, 데이터가 실제
+      의사결정에 연결되는 지점에 관심이 많습니다.
     </p>
 
     <div class="affil-grid">
       <div class="affil-card reveal">
         <div class="affil-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10l9-6 9 6"/><path d="M4 10h16v9H4z"/><path d="M9 19v-6M15 19v-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10l9-6 9 6"/><path d="M4 10h16v9H4z"/><path d="M9 19v-6M15 19v-6"/></svg>
         </div>
         <h3>경희대학교</h3>
         <p>스마트우주산업연구소 연구원</p>
       </div>
       <div class="affil-card reveal">
         <div class="affil-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2.5 2.5 3.8 6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-6-3.8-9s1.3-6.5 3.8-9z"/><path d="M3 12h18"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3c2.5 2.5 3.8 6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-6-3.8-9s1.3-6.5 3.8-9z"/><path d="M3 12h18"/></svg>
         </div>
         <h3>Airstas</h3>
-        <p>우주항공청 산하 사단법인 <br>AI Research center for Space Tourism<br>And Sustainability · 사무총장</p>
+        <p>우주항공청 산하 사단법인<br>AI Research center for Space Tourism<br>And Sustainability · 사무총장</p>
       </div>
       <div class="affil-card reveal">
         <div class="affil-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg>
         </div>
-        <h3>K-SPACE <br>Working Group</h3>
-        <p> 실무운영진</p>
+        <h3>K-SPACE<br>Working Group</h3>
+        <p>실무운영진</p>
       </div>
       <div class="affil-card reveal">
         <div class="affil-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
         </div>
         <h3>APJBR</h3>
         <p>Asia Pacific Journal of<br>Business Review · 편집간사</p>
@@ -131,53 +179,79 @@
   </div>
 </section>
 
-<!-- ================= PROJECT ================= -->
+<!-- ================= PROJECTS ================= -->
 <section class="section section-alt" id="projects">
   <div class="container">
     <p class="section-eyebrow reveal">Projects</p>
     <h2 class="section-title reveal">대표 프로젝트</h2>
-    <p class="section-desc reveal">데이터 분석·통계 모델링을 중심으로 수행한 연구 및 용역 프로젝트임</p>
+    <p class="section-desc reveal">데이터 분석과 통계 모델링을 중심으로 수행한 연구·용역 프로젝트입니다. 카드에 마우스를 올리면 사용한 방법이 나타납니다.</p>
 
-    <div class="project-grid">
-      <div class="project-card reveal">
+    <!-- 카드에 마우스를 올리면 .card-tech 안의 키워드가 나타납니다. 키워드는 자유롭게 수정하세요. -->
+    <div class="project-grid" id="projectGrid">
+      <article class="project-card reveal">
         <span class="project-tag">애셋 유사도 기반 추천시스템</span>
         <h3>디지털 3D 애셋의 지능형 축적 및 공유 플랫폼 개발</h3>
-         <p class="project-client">발주처: 중소벤처기업부</p>
+        <p class="project-client">발주처: 중소벤처기업부</p>
+        <div class="card-tech">
+          <span>추천시스템</span><span>유사도 분석</span><span>3D 애셋</span>
+        </div>
+      </article>
 
-      </div>
-      <div class="project-card reveal">
+      <article class="project-card reveal">
         <span class="project-tag">기술개발 자문</span>
         <h3>한국-파라과이 아동청소년 권리보호를 위한 AR 기반 예방교육 게임 앱 개발</h3>
         <p class="project-client">발주처: KOICA (한국국제협력단)</p>
-      </div>
-      <div class="project-card reveal">
+        <div class="card-tech">
+          <span>AR</span><span>교육 게임</span><span>기술 자문</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
         <span class="project-tag">DB 구축</span>
         <h3>수입식품 안전 위해도 예측모형 연구</h3>
         <p class="project-client">발주처: 식품의약품안전처</p>
-      </div>
-      <div class="project-card reveal">
+        <div class="card-tech">
+          <span>예측모형</span><span>이미지 DB</span><span>위해도 분석</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
         <span class="project-tag">PM</span>
         <h3>생성형 AI 기반 문화·관광 분야 창·저작 콘텐츠 유통플랫폼 서비스 구축</h3>
         <p class="project-client">발주처: 서울시 경제진흥원</p>
-      </div>
-      <div class="project-card reveal">
+        <div class="card-tech">
+          <span>생성형 AI</span><span>플랫폼 구축</span><span>프로젝트 관리</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
         <span class="project-tag">알고리즘 개발</span>
         <h3>보건의료기관 감염재난 대책 역량 강화를 위한 인력관리체계 구축</h3>
         <p class="project-detail">세부: 디지털 바이오마커 기반 감염재난 대응 의료종사자 위험 시그널 탐색 알고리즘 개발</p>
-         <p class="project-client">발주처: 보건복지부</p>
+        <p class="project-client">발주처: 보건복지부</p>
+        <div class="card-tech">
+          <span>디지털 바이오마커</span><span>시그널 탐색</span><span>알고리즘</span>
+        </div>
+      </article>
 
-      </div>
-      <div class="project-card reveal">
+      <article class="project-card reveal">
         <span class="project-tag">법률·제도 사전 구축</span>
         <h3>AI-반도체 해외진출지원</h3>
         <p class="project-detail">현지 실증 수행 및 GDPR 준수 등을 위한 법률·제도적 자문 수행</p>
         <p class="project-client">발주처: 엘비에스테크</p>
-      </div>
-      <div class="project-card reveal">
+        <div class="card-tech">
+          <span>GDPR</span><span>현지 실증</span><span>제도 자문</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
         <span class="project-tag">파생변수 개발</span>
         <h3>SK하이닉스 사내식당 식수 예측 및 효율적 운영을 위한 예측모델 개발</h3>
         <p class="project-client">발주처: SK hystec</p>
-      </div>
+        <div class="card-tech">
+          <span>수요 예측</span><span>파생변수</span><span>운영 최적화</span>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -190,42 +264,65 @@
 
     <div class="pub-awards-grid">
       <div class="pub-col reveal">
-        <h3 class="pub-col-title">대표 논문</h3>
+        <h3 class="col-title">대표 논문</h3>
+
         <div class="pub-item">
-          <p class="pub-cite">Kim, M. J., Hall, C. M., Kwon, O., Hwang, K., &amp; Kim, J. S. (2024). <em>Orbital and sub-orbital space tourism: Motivation, constraint and artificial intelligence.</em> Tourism Review, 79(2), 392–407.</p>
+          <div class="pub-badges">
+            <span class="pub-badge">2024</span>
+            <span class="pub-badge badge-outline">International</span>
+          </div>
+          <p class="pub-cite">Kim, M. J., Hall, C. M., Kwon, O., <strong>Hwang, K.</strong>, &amp; Kim, J. S. (2024). <em>Orbital and sub-orbital space tourism: Motivation, constraint and artificial intelligence.</em> Tourism Review, 79(2), 392–407.</p>
         </div>
+
         <div class="pub-item">
-          <p class="pub-cite">황경화, 황심예, 고풍, & 권오병. (2025). 이미지 생성형 AI 활용 교육의 기대감에 영향을 미치는 요인 연구: 정보격차 요인의 조절효과. 지능정보연구, 31(1), 233-253.</p>
+          <div class="pub-badges">
+            <span class="pub-badge">2025</span>
+            <span class="pub-badge badge-outline">국내 학술지</span>
+          </div>
+          <p class="pub-cite"><strong>황경화</strong>, 황심예, 고풍, &amp; 권오병. (2025). 이미지 생성형 AI 활용 교육의 기대감에 영향을 미치는 요인 연구: 정보격차 요인의 조절효과. 지능정보연구, 31(1), 233–253.</p>
         </div>
-        <p class="pub-more">이 외 국내&국제학술지 논문 다수</p>
+
+        <p class="pub-more">이 외 국내·국제 학술지 논문 다수</p>
         <a href="https://scholar.google.co.kr/citations?hl=ko&user=ta3gg88AAAAJ" target="_blank" rel="noopener" class="link-arrow">전체 논문 목록 보기 (Google Scholar) →</a>
       </div>
 
       <div class="pub-col reveal">
-        <h3 class="pub-col-title">수상 내역</h3>
+        <h3 class="col-title">수상 내역</h3>
         <ul class="award-list">
           <li>
-            <strong>한국항공우주학회 2024 추계학술대회 우수논문상</strong>
-            <span>중국과 미국의 우주벤처기업 투자 성공요인 비교분석: Crunchbase를 중심으로</span>
+            <span class="award-year">2024</span>
+            <div>
+              <strong>한국항공우주학회 추계학술대회 우수논문상</strong>
+              <span>중국과 미국의 우주벤처기업 투자 성공요인 비교분석: Crunchbase를 중심으로</span>
+            </div>
           </li>
           <li>
-            <strong>The 2nd World Conference on Smart Tourism 2024</strong>
-            <span>Best Research Paper Award</span>
+            <span class="award-year">2024</span>
+            <div>
+              <strong>The 2nd World Conference on Smart Tourism</strong>
+              <span>Best Research Paper Award</span>
+            </div>
           </li>
           <li>
-            <strong>2020 산업융합활성화방안연구논문공모전 한국IT서비스학회장상(우수상)</strong>
-            <span>소셜네트워크서비스 추이를 활용한 수정된 감염예측모델 제안: COVID-19 한국 사례를 중심으로</span>
+            <span class="award-year">2020</span>
+            <div>
+              <strong>산업융합활성화방안연구논문공모전 한국IT서비스학회장상(우수상)</strong>
+              <span>소셜네트워크서비스 추이를 활용한 수정된 감염예측모델 제안: COVID-19 한국 사례를 중심으로</span>
+            </div>
           </li>
           <li>
-            <strong>한국경영교육학회 2019 춘계학술대회 우수발표논문상</strong>
-            <span>인공지능 제품수용연구: 성별과 연령을 중심으로</span>
+            <span class="award-year">2019</span>
+            <div>
+              <strong>한국경영교육학회 춘계학술대회 우수발표논문상</strong>
+              <span>인공지능 제품수용연구: 성별과 연령을 중심으로</span>
+            </div>
           </li>
         </ul>
       </div>
     </div>
 
     <div class="teaching-block reveal">
-      <h3 class="pub-col-title">강의 경력</h3>
+      <h3 class="col-title">강의 경력</h3>
       <p><strong>2026 제주 rise.aws 글로벌 스페이스 부트캠프</strong> — 우주데이터에 대한 이해 및 Google Colab 활용 실전 분석 파트 강의 (2026.01.02–01.16)</p>
     </div>
   </div>
@@ -235,11 +332,42 @@
 <section class="section section-alt" id="skills">
   <div class="container">
     <p class="section-eyebrow reveal">Skills</p>
-    <h2 class="section-title reveal">보유 기술</h2>
+    <h2 class="section-title reveal">Expertise &amp; Tools</h2>
 
     <div class="skills-grid">
       <div class="skill-group reveal">
-        <h3>Programming Language</h3>
+        <h3><span class="skill-idx">01</span> Core Expertise</h3>
+        <div class="badge-row">
+          <span class="badge badge-core">Machine Learning</span>
+          <span class="badge badge-core">Deep Learning</span>
+          <span class="badge badge-core">SEM</span>
+          <span class="badge badge-core">Meta-analysis</span>
+          <span class="badge badge-core">Predictive Modeling</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3><span class="skill-idx">02</span> AI / ML Frameworks</h3>
+        <div class="badge-row">
+          <span class="badge">PyTorch</span>
+          <span class="badge">TensorFlow</span>
+          <span class="badge">Qiskit</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3><span class="skill-idx">03</span> Research &amp; Statistics</h3>
+        <div class="badge-row">
+          <span class="badge">R</span>
+          <span class="badge">SPSS</span>
+          <span class="badge">AMOS</span>
+          <span class="badge">VOSviewer</span>
+          <span class="badge">Tableau</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3><span class="skill-idx">04</span> Programming &amp; Development</h3>
         <div class="badge-row">
           <span class="badge">Python</span>
           <span class="badge">JAVA</span>
@@ -247,34 +375,9 @@
           <span class="badge">SQL</span>
           <span class="badge">JavaScript</span>
           <span class="badge">PHP</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <h3>Programming Technologies</h3>
-        <div class="badge-row">
-          <span class="badge">PyTorch</span>
-          <span class="badge">TensorFlow</span>
-          <span class="badge">Qiskit</span>
           <span class="badge">Spring</span>
           <span class="badge">Flask</span>
           <span class="badge">Django</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <h3>통계 / 분석 기법</h3>
-        <div class="badge-row">
-          <span class="badge">R</span>
-          <span class="badge">SPSS</span>
-          <span class="badge">AMOS</span>
-          <span class="badge">SEM</span>
-          <span class="badge">메타분석</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <h3>시각화 / 문헌분석</h3>
-        <div class="badge-row">
-          <span class="badge">Tableau</span>
-          <span class="badge">VOSviewer</span>
         </div>
       </div>
     </div>
@@ -283,21 +386,28 @@
 
 <!-- ================= CONTACT ================= -->
 <section class="section contact" id="contact">
+  <div class="aurora" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+  </div>
   <canvas id="starCanvas2" aria-hidden="true"></canvas>
+
   <div class="container contact-inner">
     <p class="section-eyebrow reveal">Contact</p>
     <h2 class="section-title reveal">함께 만들어갈 다음 연구를 기다립니다</h2>
     <p class="contact-desc reveal">연구 협업, 자문, 강의 제안까지 — 어떤 이야기든 반갑게 듣겠습니다.</p>
+
     <div class="contact-links reveal">
       <a href="mailto:hoi7i@naver.com" class="contact-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
         hoi7i@naver.com
       </a>
       <a href="https://scholar.google.co.kr/citations?hl=ko&user=ta3gg88AAAAJ" target="_blank" rel="noopener" class="contact-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
         Google Scholar
       </a>
-     </div>
+      <!-- 링크를 더 넣고 싶으면 위 <a> 한 덩어리를 복사해서 주소와 이름만 바꾸세요 (ORCID, LinkedIn 등) -->
+    </div>
   </div>
 </section>
 
