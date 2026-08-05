@@ -1,684 +1,316 @@
-/* ============================================================
-   황경화 포트폴리오 — style.css
-   · 컨테이너는 max-width 로 고정, 그 안에서만 반응형 재배치됨
-   · 폰트 크기는 아래 :root 의 --fs-base 하나만 바꾸면 전체가 함께 커짐
-   ============================================================ */
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>황경화 | Kyunghwa Hwang — Data-Driven Researcher</title>
+<meta name="description" content="황경화(Kyunghwa Hwang) — 우주관광·XR 분야 데이터 연구자 포트폴리오. SEM, 혼합연구방법론, AI 예측모델링.">
 
-:root{
-  --navy:#0F1B3D;
-  --navy-2:#16264F;
-  --gold:#C9A34E;
-  --gold-lt:#E7C97F;
-  --teal:#2A7F7B;
-  --ink:#181A21;
-  --sub:#5B6270;
-  --bg:#FFFFFF;
-  --bg-alt:#F6F6F8;
-  --border:#E6E7EC;
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230F1B3D'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%23C9A34E'/%3E%3Ccircle cx='72' cy='34' r='3' fill='%23C9A34E'/%3E%3Ccircle cx='28' cy='68' r='3' fill='%23C9A34E'/%3E%3C/svg%3E">
 
-  --max-width:1180px;     /* 콘텐츠 고정 폭 */
-  --fs-base:18px;         /* ← 전체 글자 크기 기준값 */
-  --radius:16px;
-  --font-kr:'Noto Sans KR', sans-serif;
-  --font-en:'Space Grotesk', sans-serif;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-*{ margin:0; padding:0; box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-body{
-  font-family:var(--font-kr);
-  font-size:var(--fs-base);
-  color:var(--ink);
-  background:var(--bg);
-  line-height:1.72;
-  word-break:keep-all;
-  -webkit-font-smoothing:antialiased;
-}
-img{ max-width:100%; display:block; }
-a{ color:inherit; text-decoration:none; }
-ul{ list-style:none; }
-svg{ width:100%; height:100%; }
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-/* ---------- 고정폭 컨테이너 (핵심) ----------
-   대형 화면에서도 이 폭 이상으로 넓어지지 않음. */
-.container{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:0 30px;
-}
+<!-- 스크롤 진행률 표시 바 (페이지 최상단) -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-section.section{ padding:132px 0; }
-.section-alt{ background:var(--bg-alt); }
+<!-- ================= NAV ================= -->
+<header id="siteNav" class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-logo">황경화<span class="nav-logo-dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-.section-eyebrow{
-  color:var(--gold);
-  font-family:var(--font-en);
-  font-weight:600;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  font-size:15px;
-  margin-bottom:16px;
-}
-.section-title{
-  font-size:clamp(32px, 4vw, 46px);
-  font-weight:700;
-  line-height:1.3;
-  margin-bottom:24px;
-  letter-spacing:-0.015em;
-  position:relative;
-  display:inline-block;
-  padding-bottom:14px;
-}
-/* 제목 아래 밑줄이 좌→우로 그려지는 효과 */
-.section-title::after{
-  content:"";
-  position:absolute;
-  left:0; bottom:0;
-  height:4px;
-  width:0;
-  border-radius:2px;
-  background:linear-gradient(90deg, var(--gold), var(--gold-lt));
-  transition:width .9s cubic-bezier(.2,.8,.2,1) .15s;
-}
-.section-title.is-visible::after{ width:72px; }
-.contact .section-title{ display:inline-block; }
-.contact .section-title::after{ left:50%; transform:translateX(-50%); }
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <canvas id="starCanvas" aria-hidden="true"></canvas>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow hero-anim" style="--d:.05s">Ph.D. in Engineering · Big Data Analytics</p>
+      <h1 class="hero-anim" style="--d:.18s">
+        아직 오지 않은 미래를<br>
+        <span class="accent-grad">데이터</span>로 먼저 읽습니다
+      </h1>
 
-.section-desc{
-  color:var(--sub);
-  font-size:18px;
-  max-width:620px;
-  margin-bottom:56px;
-}
+      <!-- 자동으로 글자가 타이핑되는 줄 (문구는 js/main.js 의 ROTATING_WORDS 에서 수정) -->
+      <p class="hero-typed hero-anim" style="--d:.3s">
+        <span class="typed-label">지금 연구하고 있는 것</span>
+        <span class="typed-text" id="typedText"></span><span class="typed-caret" aria-hidden="true"></span>
+      </p>
 
-/* ---------- 스크롤 리빌 애니메이션 ---------- */
-.reveal{
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity .75s cubic-bezier(.2,.8,.2,1), transform .75s cubic-bezier(.2,.8,.2,1);
-}
-.reveal.is-visible{ opacity:1; transform:translateY(0); }
+      <p class="hero-sub hero-anim" style="--d:.42s">
+        우주관광이라는 아직 열리지 않은 시장과, XR이라는 새로운 경험의 문법.
+        통계모델링·머신러닝·딥러닝·메타분석을 엮어 그 안의 신호를 찾아냅니다.
+      </p>
 
-/* ---------- 히어로 등장 애니메이션 (로드 즉시, 순차) ---------- */
-@keyframes heroUp{
-  from{ opacity:0; transform:translateY(30px); }
-  to  { opacity:1; transform:translateY(0); }
-}
-.hero-anim{
-  opacity:0;
-  animation:heroUp .95s cubic-bezier(.2,.8,.2,1) forwards;
-  animation-delay:var(--d, 0s);
-}
+      <div class="hero-stats hero-anim" style="--d:.54s">
+        <div class="stat">
+          <span class="stat-num" data-count="7" data-suffix="+">0</span>
+          <span class="stat-label">연구·용역 프로젝트</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="4">0</span>
+          <span class="stat-label">학술상 수상</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="4">0</span>
+          <span class="stat-label">연구기관·학회 활동</span>
+        </div>
+      </div>
 
-/* ---------- 스크롤 진행률 바 ---------- */
-.scroll-progress{
-  position:fixed;
-  top:0; left:0;
-  height:3px;
-  width:0%;
-  background:linear-gradient(90deg, var(--gold), var(--gold-lt));
-  z-index:300;
-  transition:width .1s linear;
-}
+      <div class="hero-btns hero-anim" style="--d:.66s">
+        <a href="#contact" class="btn btn-primary">연락하기</a>
+        <a href="assets/resume.pdf" class="btn btn-outline" download>이력서 다운로드</a>
+      </div>
+    </div>
+    <div class="hero-photo hero-anim" style="--d:.32s">
+      <div class="photo-frame">
+        <img src="assets/profile.jpg" alt="황경화 프로필 사진">
+      </div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-cue" aria-label="아래로 스크롤">↓</a>
+</section>
 
-/* ============================================================
-   NAV
-   ============================================================ */
-.nav{
-  position:fixed;
-  top:0; left:0; right:0;
-  z-index:200;
-  background:rgba(15,27,61,0);
-  transition:background .35s ease, box-shadow .35s ease;
-}
-.nav.scrolled{
-  background:rgba(15,27,61,.93);
-  backdrop-filter:blur(12px);
-  box-shadow:0 2px 22px rgba(0,0,0,.18);
-}
-.nav-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:86px;
-  transition:height .35s ease;
-}
-.nav.scrolled .nav-inner{ height:70px; }
-.nav-logo{
-  font-family:var(--font-en);
-  font-weight:700;
-  font-size:23px;
-  color:#fff;
-}
-.nav-logo-dot{ color:var(--gold); }
-.nav-links{
-  display:flex;
-  gap:36px;
-  font-size:16px;
-  font-weight:500;
-  color:rgba(255,255,255,.85);
-}
-.nav-links a{ position:relative; transition:color .2s ease; padding:4px 0; }
-.nav-links a::after{
-  content:"";
-  position:absolute;
-  left:0; bottom:0;
-  width:0; height:2px;
-  background:var(--gold);
-  transition:width .28s ease;
-}
-.nav-links a:hover{ color:var(--gold); }
-.nav-links a:hover::after{ width:100%; }
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-eyebrow reveal">About</p>
+    <h2 class="section-title reveal">연구자 소개</h2>
+    <p class="about-text reveal">
+      경희대학교 빅데이터응용학과에서 경영학 석사와 공학 박사 학위를 취득했으며,<br>
+      통계적 모델링과 혼합연구방법론(Mixed-Methods)을 바탕으로 우주관광·XR
+      분야를 연구하고 있습니다. <br>AI 기반 예측모델 개발부터 정책 자문까지, 데이터가
+      실제 의사결정에 연결되는 지점에 관심이 많습니다.
+    </p>
 
-.menu-btn{
-  display:none;
-  flex-direction:column;
-  gap:6px;
-  background:none;
-  border:none;
-  cursor:pointer;
-  padding:8px;
-}
-.menu-btn span{
-  width:24px; height:2px;
-  background:#fff;
-  transition:transform .25s ease, opacity .25s ease;
-}
+    <div class="affil-grid">
+      <div class="affil-card reveal">
+        <div class="affil-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10l9-6 9 6"/><path d="M4 10h16v9H4z"/><path d="M9 19v-6M15 19v-6"/></svg>
+        </div>
+        <h3>경희대학교</h3>
+        <p>스마트우주산업연구소 연구원</p>
+      </div>
+      <div class="affil-card reveal">
+        <div class="affil-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2.5 2.5 3.8 6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-6-3.8-9s1.3-6.5 3.8-9z"/><path d="M3 12h18"/></svg>
+        </div>
+        <h3>Airstas</h3>
+        <p>우주항공청 산하 사단법인 <br>AI Research center for Space Tourism<br>And Sustainability · 사무총장</p>
+      </div>
+      <div class="affil-card reveal">
+        <div class="affil-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg>
+        </div>
+        <h3>K-SPACE <br>Working Group</h3>
+        <p> 실무운영진</p>
+      </div>
+      <div class="affil-card reveal">
+        <div class="affil-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+        </div>
+        <h3>APJBR</h3>
+        <p>Asia Pacific Journal of<br>Business Review · 편집간사</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  background:linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
-  color:#fff;
-  overflow:hidden;
-  padding:120px 0 100px;
-}
-#starCanvas, #starCanvas2{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-}
-.hero-inner{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:1.35fr .65fr;
-  gap:60px;
-  align-items:center;
-}
-.eyebrow{
-  font-family:var(--font-en);
-  color:var(--gold);
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  font-size:15px;
-  margin-bottom:24px;
-}
-.hero h1{
-  font-size:clamp(38px, 5.2vw, 64px);
-  font-weight:900;
-  line-height:1.26;
-  letter-spacing:-0.02em;
-  margin-bottom:26px;
-}
-/* 금색 그라디언트가 천천히 흐르는 강조 텍스트 */
-.accent-grad{
-  background:linear-gradient(100deg, var(--gold) 10%, #FFF0C4 35%, var(--gold) 60%);
-  background-size:220% auto;
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  animation:shimmer 5.5s linear infinite;
-}
-@keyframes shimmer{
-  from{ background-position:0% center; }
-  to  { background-position:220% center; }
-}
-.accent{ color:var(--gold); }
+<!-- ================= PROJECT ================= -->
+<section class="section section-alt" id="projects">
+  <div class="container">
+    <p class="section-eyebrow reveal">Projects</p>
+    <h2 class="section-title reveal">대표 프로젝트</h2>
+    <p class="section-desc reveal">데이터 분석·통계 모델링을 중심으로 수행한 연구 및 용역 프로젝트임</p>
 
-/* 타이핑 되는 줄 */
-.hero-typed{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-bottom:22px;
-  font-size:19px;
-}
-.typed-label{
-  font-size:14px;
-  font-weight:600;
-  letter-spacing:.04em;
-  color:var(--gold);
-  border:1px solid rgba(201,163,78,.45);
-  border-radius:999px;
-  padding:5px 14px;
-  white-space:nowrap;
-}
-.typed-text{
-  color:#fff;
-  font-weight:500;
-  min-height:1.6em;
-}
-.typed-caret{
-  display:inline-block;
-  width:2px;
-  height:1.15em;
-  background:var(--gold);
-  margin-left:-8px;
-  animation:blink 1s step-end infinite;
-}
-@keyframes blink{ 50%{ opacity:0; } }
+    <div class="project-grid">
+      <div class="project-card reveal">
+        <span class="project-tag">애셋 유사도 기반 추천시스템</span>
+        <h3>디지털 3D 애셋의 지능형 축적 및 공유 플랫폼 개발</h3>
+         <p class="project-client">발주처: 중소벤처기업부</p>
 
-.hero-sub{
-  color:rgba(255,255,255,.8);
-  font-size:19px;
-  line-height:1.78;
-  max-width:590px;
-  margin-bottom:38px;
-}
+      </div>
+      <div class="project-card reveal">
+        <span class="project-tag">기술개발 자문</span>
+        <h3>한국-파라과이 아동청소년 권리보호를 위한 AR 기반 예방교육 게임 앱 개발</h3>
+        <p class="project-client">발주처: KOICA (한국국제협력단)</p>
+      </div>
+      <div class="project-card reveal">
+        <span class="project-tag">DB 구축</span>
+        <h3>수입식품 안전 위해도 예측모형 연구</h3>
+        <p class="project-client">발주처: 식품의약품안전처</p>
+      </div>
+      <div class="project-card reveal">
+        <span class="project-tag">PM</span>
+        <h3>생성형 AI 기반 문화·관광 분야 창·저작 콘텐츠 유통플랫폼 서비스 구축</h3>
+        <p class="project-client">발주처: 서울시 경제진흥원</p>
+      </div>
+      <div class="project-card reveal">
+        <span class="project-tag">알고리즘 개발</span>
+        <h3>보건의료기관 감염재난 대책 역량 강화를 위한 인력관리체계 구축</h3>
+        <p class="project-detail">세부: 디지털 바이오마커 기반 감염재난 대응 의료종사자 위험 시그널 탐색 알고리즘 개발</p>
+         <p class="project-client">발주처: 보건복지부</p>
 
-/* 숫자가 올라가는 통계 */
-.hero-stats{
-  display:flex;
-  gap:52px;
-  flex-wrap:wrap;
-  margin-bottom:40px;
-  padding-top:28px;
-  border-top:1px solid rgba(255,255,255,.14);
-}
-.stat{ display:flex; flex-direction:column; }
-.stat-num{
-  font-family:var(--font-en);
-  font-size:40px;
-  font-weight:700;
-  line-height:1.1;
-  color:var(--gold);
-}
-.stat-label{
-  font-size:14.5px;
-  color:rgba(255,255,255,.62);
-  margin-top:4px;
-}
+      </div>
+      <div class="project-card reveal">
+        <span class="project-tag">법률·제도 사전 구축</span>
+        <h3>AI-반도체 해외진출지원</h3>
+        <p class="project-detail">현지 실증 수행 및 GDPR 준수 등을 위한 법률·제도적 자문 수행</p>
+        <p class="project-client">발주처: 엘비에스테크</p>
+      </div>
+      <div class="project-card reveal">
+        <span class="project-tag">파생변수 개발</span>
+        <h3>SK하이닉스 사내식당 식수 예측 및 효율적 운영을 위한 예측모델 개발</h3>
+        <p class="project-client">발주처: SK hystec</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-.hero-btns{ display:flex; gap:16px; flex-wrap:wrap; }
+<!-- ================= PUBLICATIONS & AWARDS ================= -->
+<section class="section" id="publications">
+  <div class="container">
+    <p class="section-eyebrow reveal">Publications &amp; Awards</p>
+    <h2 class="section-title reveal">논문 및 수상</h2>
 
-.btn{
-  position:relative;
-  display:inline-block;
-  padding:17px 34px;
-  border-radius:999px;
-  font-weight:600;
-  font-size:16.5px;
-  overflow:hidden;
-  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, color .22s ease;
-}
-.btn-primary{
-  background:var(--gold);
-  color:var(--navy);
-  box-shadow:0 8px 24px rgba(201,163,78,.28);
-}
-.btn-primary:hover{ transform:translateY(-3px); box-shadow:0 14px 32px rgba(201,163,78,.42); }
-/* 버튼 위로 지나가는 빛 효과 */
-.btn::before{
-  content:"";
-  position:absolute;
-  top:0; left:-120%;
-  width:60%; height:100%;
-  background:linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
-  transition:left .65s ease;
-}
-.btn:hover::before{ left:130%; }
-.btn-outline{
-  border:1.5px solid rgba(255,255,255,.42);
-  color:#fff;
-}
-.btn-outline:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-3px); }
+    <div class="pub-awards-grid">
+      <div class="pub-col reveal">
+        <h3 class="pub-col-title">대표 논문</h3>
+        <div class="pub-item">
+          <p class="pub-cite">Kim, M. J., Hall, C. M., Kwon, O., Hwang, K., &amp; Kim, J. S. (2024). <em>Orbital and sub-orbital space tourism: Motivation, constraint and artificial intelligence.</em> Tourism Review, 79(2), 392–407.</p>
+        </div>
+        <div class="pub-item">
+          <p class="pub-cite">황경화, 황심예, 고풍, & 권오병. (2025). 이미지 생성형 AI 활용 교육의 기대감에 영향을 미치는 요인 연구: 정보격차 요인의 조절효과. 지능정보연구, 31(1), 233-253.</p>
+        </div>
+        <p class="pub-more">이 외 국내&국제학술지 논문 다수</p>
+        <a href="https://scholar.google.co.kr/citations?hl=ko&user=ta3gg88AAAAJ" target="_blank" rel="noopener" class="link-arrow">전체 논문 목록 보기 (Google Scholar) →</a>
+      </div>
 
-.hero-photo{ display:flex; justify-content:center; }
-.photo-frame{
-  position:relative;
-  width:290px;
-  aspect-ratio:4/5;
-  border-radius:var(--radius);
-  overflow:hidden;
-  border:3px solid rgba(201,163,78,.5);
-  box-shadow:0 28px 70px rgba(0,0,0,.45);
-  animation:floatY 6s ease-in-out infinite;
-}
-@keyframes floatY{
-  0%,100%{ transform:translateY(0); }
-  50%    { transform:translateY(-14px); }
-}
-.photo-frame img{ width:100%; height:100%; object-fit:cover; }
+      <div class="pub-col reveal">
+        <h3 class="pub-col-title">수상 내역</h3>
+        <ul class="award-list">
+          <li>
+            <strong>한국항공우주학회 2024 추계학술대회 우수논문상</strong>
+            <span>중국과 미국의 우주벤처기업 투자 성공요인 비교분석: Crunchbase를 중심으로</span>
+          </li>
+          <li>
+            <strong>The 2nd World Conference on Smart Tourism 2024</strong>
+            <span>Best Research Paper Award</span>
+          </li>
+          <li>
+            <strong>2020 산업융합활성화방안연구논문공모전 한국IT서비스학회장상(우수상)</strong>
+            <span>소셜네트워크서비스 추이를 활용한 수정된 감염예측모델 제안: COVID-19 한국 사례를 중심으로</span>
+          </li>
+          <li>
+            <strong>한국경영교육학회 2019 춘계학술대회 우수발표논문상</strong>
+            <span>인공지능 제품수용연구: 성별과 연령을 중심으로</span>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-.scroll-cue{
-  position:absolute;
-  bottom:30px; left:50%;
-  transform:translateX(-50%);
-  color:rgba(255,255,255,.6);
-  font-size:24px;
-  animation:bob 2s ease-in-out infinite;
-  z-index:2;
-}
-@keyframes bob{
-  0%,100%{ transform:translate(-50%,0); }
-  50%    { transform:translate(-50%,10px); }
-}
+    <div class="teaching-block reveal">
+      <h3 class="pub-col-title">강의 경력</h3>
+      <p><strong>2026 제주 rise.aws 글로벌 스페이스 부트캠프</strong> — 우주데이터에 대한 이해 및 Google Colab 활용 실전 분석 파트 강의 (2026.01.02–01.16)</p>
+    </div>
+  </div>
+</section>
 
-/* ============================================================
-   ABOUT
-   ============================================================ */
-.about-text{
-  color:var(--sub);
-  font-size:19px;
-  line-height:1.85;
-  max-width:820px;
-  margin-bottom:64px;
-}
-.affil-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
-}
-.affil-card{
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:30px 24px;
-  background:#fff;
-  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
-}
-.affil-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(15,27,61,.1);
-  border-color:var(--gold);
-}
-.affil-icon{
-  width:46px; height:46px;
-  color:var(--navy);
-  margin-bottom:18px;
-  transition:transform .28s ease, color .28s ease;
-}
-.affil-card:hover .affil-icon{ transform:scale(1.12) rotate(-4deg); color:var(--gold); }
-.affil-card h3{ font-size:18px; margin-bottom:8px; line-height:1.4; }
-.affil-card p{ font-size:15px; color:var(--sub); line-height:1.65; }
+<!-- ================= SKILLS ================= -->
+<section class="section section-alt" id="skills">
+  <div class="container">
+    <p class="section-eyebrow reveal">Skills</p>
+    <h2 class="section-title reveal">보유 기술</h2>
 
-/* ============================================================
-   PROJECTS
-   ============================================================ */
-.project-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-.project-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:30px 26px;
-  transition:transform .28s ease, box-shadow .28s ease;
-}
-.project-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 22px 44px rgba(15,27,61,.12);
-}
-.project-tag{
-  display:inline-block;
-  background:rgba(42,127,123,.1);
-  color:var(--teal);
-  font-size:13px;
-  font-weight:700;
-  padding:6px 14px;
-  border-radius:999px;
-  margin-bottom:16px;
-  line-height:1.45;
-}
-.project-card h3{ font-size:19px; line-height:1.45; margin-bottom:12px; }
-.project-detail{ font-size:15px; color:var(--sub); margin-bottom:10px; line-height:1.65; }
-.project-client{ font-size:15px; color:var(--gold); font-weight:600; }
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <h3>Programming Language</h3>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">JAVA</span>
+          <span class="badge">C</span>
+          <span class="badge">SQL</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">PHP</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Programming Technologies</h3>
+        <div class="badge-row">
+          <span class="badge">PyTorch</span>
+          <span class="badge">TensorFlow</span>
+          <span class="badge">Qiskit</span>
+          <span class="badge">Spring</span>
+          <span class="badge">Flask</span>
+          <span class="badge">Django</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>통계 / 분석 기법</h3>
+        <div class="badge-row">
+          <span class="badge">R</span>
+          <span class="badge">SPSS</span>
+          <span class="badge">AMOS</span>
+          <span class="badge">SEM</span>
+          <span class="badge">메타분석</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>시각화 / 문헌분석</h3>
+        <div class="badge-row">
+          <span class="badge">Tableau</span>
+          <span class="badge">VOSviewer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-/* ============================================================
-   PUBLICATIONS & AWARDS
-   ============================================================ */
-.pub-awards-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  margin-bottom:60px;
-}
-.pub-col-title{
-  font-size:21px;
-  font-weight:700;
-  margin-bottom:26px;
-  padding-bottom:14px;
-  border-bottom:2px solid var(--navy);
-  display:inline-block;
-}
-.pub-item{ margin-bottom:24px; }
-.pub-cite{ font-size:16.5px; color:var(--ink); line-height:1.78; }
-.pub-cite em{ font-style:italic; color:var(--sub); }
-.pub-badge{
-  display:inline-block;
-  margin-top:10px;
-  background:var(--gold);
-  color:var(--navy);
-  font-size:13px;
-  font-weight:700;
-  padding:5px 14px;
-  border-radius:999px;
-}
-.pub-more{ font-size:15.5px; color:var(--sub); margin-bottom:16px; }
-.link-arrow{
-  font-weight:600;
-  color:var(--teal);
-  font-size:16px;
-  transition:opacity .2s ease, transform .2s ease;
-  display:inline-block;
-}
-.link-arrow:hover{ opacity:.75; transform:translateX(4px); }
+<!-- ================= CONTACT ================= -->
+<section class="section contact" id="contact">
+  <canvas id="starCanvas2" aria-hidden="true"></canvas>
+  <div class="container contact-inner">
+    <p class="section-eyebrow reveal">Contact</p>
+    <h2 class="section-title reveal">함께 만들어갈 다음 연구를 기다립니다</h2>
+    <p class="contact-desc reveal">연구 협업, 자문, 강의 제안까지 — 어떤 이야기든 반갑게 듣겠습니다.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:hoi7i@naver.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        hoi7i@naver.com
+      </a>
+      <a href="https://scholar.google.co.kr/citations?hl=ko&user=ta3gg88AAAAJ" target="_blank" rel="noopener" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+        Google Scholar
+      </a>
+     </div>
+  </div>
+</section>
 
-.award-list li{
-  padding:18px 0;
-  border-bottom:1px solid var(--border);
-  transition:padding-left .25s ease;
-}
-.award-list li:hover{ padding-left:8px; }
-.award-list li:last-child{ border-bottom:none; }
-.award-list strong{
-  display:block;
-  font-size:16.5px;
-  margin-bottom:6px;
-  line-height:1.5;
-}
-.award-list span{
-  display:block;
-  font-size:15px;
-  color:var(--sub);
-  line-height:1.6;
-}
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="#top" class="back-to-top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      맨 위로
+    </a>
+    <p>© 2026 Kyunghwa Hwang. All rights reserved.</p>
+  </div>
+</footer>
 
-.teaching-block{
-  border-top:1px solid var(--border);
-  padding-top:40px;
-}
-.teaching-block p{ font-size:16.5px; color:var(--sub); line-height:1.75; }
-.teaching-block strong{ color:var(--ink); }
-
-/* ============================================================
-   SKILLS
-   ============================================================ */
-.skills-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:46px 34px;
-}
-.skill-group h3{
-  font-family:var(--font-en);
-  font-size:16.5px;
-  color:var(--sub);
-  font-weight:600;
-  letter-spacing:.03em;
-  margin-bottom:18px;
-}
-.badge-row{ display:flex; flex-wrap:wrap; gap:11px; }
-.badge{
-  padding:11px 21px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:999px;
-  font-size:15.5px;
-  font-weight:600;
-  transition:background .22s ease, color .22s ease, border-color .22s ease, transform .22s ease;
-}
-.badge:hover{
-  background:var(--navy);
-  color:#fff;
-  border-color:var(--navy);
-  transform:translateY(-3px);
-}
-
-/* ============================================================
-   CONTACT
-   ============================================================ */
-.contact{
-  position:relative;
-  background:linear-gradient(160deg, var(--navy-2) 0%, var(--navy) 100%);
-  color:#fff;
-  text-align:center;
-  overflow:hidden;
-}
-.contact-inner{ position:relative; z-index:2; }
-.contact-desc{
-  color:rgba(255,255,255,.78);
-  font-size:18px;
-  margin-bottom:44px;
-}
-.contact-links{
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  flex-wrap:wrap;
-}
-.contact-link{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:16px 28px;
-  border:1.5px solid rgba(255,255,255,.25);
-  border-radius:999px;
-  font-size:16px;
-  font-weight:500;
-  transition:border-color .22s ease, background .22s ease, transform .22s ease;
-}
-.contact-link svg{ width:20px; height:20px; }
-.contact-link:hover{
-  border-color:var(--gold);
-  background:rgba(201,163,78,.1);
-  transform:translateY(-3px);
-}
-
-.footer{
-  background:var(--navy);
-  color:rgba(255,255,255,.5);
-  text-align:center;
-  padding:40px 0 30px;
-  font-size:14.5px;
-}
-.footer-inner{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:20px;
-}
-.back-to-top{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:13px 26px;
-  border:1.5px solid rgba(255,255,255,.25);
-  border-radius:999px;
-  color:rgba(255,255,255,.85);
-  font-size:15px;
-  font-weight:600;
-  transition:border-color .22s ease, background .22s ease, transform .22s ease;
-}
-.back-to-top svg{ width:17px; height:17px; }
-.back-to-top:hover{
-  border-color:var(--gold);
-  background:rgba(201,163,78,.1);
-  transform:translateY(-3px);
-}
-
-/* ============================================================
-   반응형 — 고정폭 컨테이너 "내부"만 재배치됨
-   ============================================================ */
-@media (max-width:1023px){
-  :root{ --fs-base:17px; }
-  section.section{ padding:96px 0; }
-
-  .hero{ padding:110px 0 90px; }
-  .hero-inner{
-    grid-template-columns:1fr;
-    text-align:center;
-    gap:44px;
-  }
-  .hero-sub{ margin-left:auto; margin-right:auto; }
-  .hero-typed{ justify-content:center; }
-  .hero-stats{ justify-content:center; gap:44px; }
-  .hero-btns{ justify-content:center; }
-  .hero-photo{ order:-1; }
-  .photo-frame{ width:230px; }
-  .section-title::after{ left:50%; transform:translateX(-50%); }
-  .contact .section-title::after{ transform:translateX(-50%); }
-
-  .affil-grid{ grid-template-columns:repeat(2,1fr); }
-  .project-grid{ grid-template-columns:repeat(2,1fr); }
-  .pub-awards-grid{ grid-template-columns:1fr; gap:44px; }
-}
-
-@media (max-width:767px){
-  :root{ --fs-base:16.5px; }
-
-  .nav-links{
-    position:absolute;
-    top:100%; left:0; right:0;
-    background:rgba(15,27,61,.98);
-    backdrop-filter:blur(12px);
-    flex-direction:column;
-    gap:0;
-    padding:8px 0;
-    display:none;
-  }
-  .nav-links.open{ display:flex; }
-  .nav-links a{ padding:16px 30px; border-bottom:1px solid rgba(255,255,255,.08); }
-  .nav-links a::after{ display:none; }
-  .menu-btn{ display:flex; }
-
-  .hero h1{ font-size:34px; }
-  .hero-typed{ font-size:17px; gap:9px; }
-  .hero-stats{ gap:28px; justify-content:space-between; width:100%; }
-  .stat-num{ font-size:32px; }
-  .stat-label{ font-size:13px; }
-
-  .affil-grid{ grid-template-columns:1fr; }
-  .project-grid{ grid-template-columns:1fr; }
-  .skills-grid{ grid-template-columns:1fr; gap:32px; }
-}
-
-/* 애니메이션을 줄이도록 설정한 사용자 배려 */
-@media (prefers-reduced-motion: reduce){
-  *, *::before, *::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
-  }
-  .hero-anim{ opacity:1; }
-  .reveal{ opacity:1; transform:none; }
-}
+<script src="js/main.js"></script>
+</body>
+</html>
