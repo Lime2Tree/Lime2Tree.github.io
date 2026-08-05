@@ -149,12 +149,24 @@ section.section{ padding:140px 0; }
 }
 .nav.scrolled .nav-inner{ height:70px; }
 .nav-logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
   font-family:var(--font-en);
   font-weight:700;
   font-size:23px;
   color:#fff;
   letter-spacing:.01em;
 }
+.nav-logo-mark{
+  width:38px; height:38px;
+  flex:0 0 38px;
+  border-radius:10px;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.nav.scrolled .nav-logo-mark{ width:33px; height:33px; flex-basis:33px; }
+.nav-logo:hover .nav-logo-mark{ transform:rotate(-8deg) scale(1.06); }
+.nav-logo-text{ line-height:1; }
 .nav-logo-dot{ color:var(--gold); }
 .nav-links{
   display:flex;
